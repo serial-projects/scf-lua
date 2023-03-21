@@ -12,7 +12,7 @@ local function recursive_concat(list, sep)
     if type(element) == "table" then
       str = str .. recursive_concat(element)
     else
-      str = str .. tostring(element)
+      str = str .. (type(element) == 'string' and '"' .. element .. '"' or tostring(element))
     end
     str = str .. (index == #list and '' or ', ')
   end
