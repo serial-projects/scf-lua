@@ -1,0 +1,21 @@
+# Let's suppose that there is a game engine that has some options to choose:
+# The window size, the window title and other stuff. We begin with a section
+# for the window properties.
+section window
+  define  width,  800
+  define  height, 600
+  define  title,  "Engine"
+end-section
+
+# Now, let's suppose this is a list of commands to be executed on a linux
+# machine:
+section commands
+  define pre_load, [
+    "touch  ./lock",
+    "cat file.db | awk '{print $1}' | wc -l > number_things.txt"
+  ]
+  define post_load, [
+    "rm ./lock",
+    "rm file.db"
+  ]
+end-section
