@@ -184,6 +184,12 @@ function SCF_ShowTree(tree, print_function)
   --
 end
 
+function SCF_LoadBuffer(buffer, purify_buffer)
+  return  purify_buffer and SCF_Sectionize(SCF_Tokenize(buffer:gsub('\n'," "):gsub('\t',SCF_TAB_REPLACEMENT)), nil) or 
+          SCF_Sectionize(SCF_Tokenize(buffer), nil)
+end
+module.SCF_LoadBuffer = SCF_LoadBuffer
+
 function SCF_LoadFile(file)
   assert(type(file)=="string", "invalid type for file.")
   local tokenized_file = {}
